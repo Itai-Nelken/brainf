@@ -6,6 +6,7 @@ A [brainfuck](https://esolangs.org/wiki/Brainfuck) interpreter written in C.
 ## features
 - Understands both strings of instructions and single ones, no need for a separator!
 - Can read instructions from a file.
+- can compile brainfuck code into C code
 
 ## Compiling
 ```
