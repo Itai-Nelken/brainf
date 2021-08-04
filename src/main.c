@@ -105,12 +105,58 @@ void execute(int *prog) {
 			case OP_END:
 				//printf("[%d] program end\n", pc);
 				exit=1;
+				break;
 		}
 		if(exit) break;
 	}
 	printf("\n");
 	mem_free(m);
 	stack_free(s);
+}
+
+int b2c(int *prog, char *filename) {
+	FILE *out=fopen(filename, "w");
+	if(out==NULL) {
+		perror("fopen()");
+		return 1;
+	}
+	fprintf(out, "#include <stdio.h>\nint main(void) {\n");
+    fprintf(out, "char mem[30000]={0};\nchar *ptr=mem;\n");
+	for(int pc=0, exit=0;; pc++) {
+		switch(prog[pc]) {
+	   		case OP_INC_P:
+				fprintf(out, "++ptr;\n");
+	   			break;
+	   		case OP_DEC_P:
+            	fprintf(out, "--ptr;\n");
+	   			break;
+	   		case OP_INC_VAL:
+            	fprintf(out, "++*ptr;\n");
+	   			break;
+	   		case OP_DEC_VAL:
+            	fprintf(out, "--*ptr;\n");
+	   			break;
+	   		case OP_OUT:
+            	fprintf(out, "putchar(*ptr);\n");
+	   			break;
+	   		case OP_IN:
+            	fprintf(out, "*ptr=getchar();\n");
+	   			break;
+	   		case OP_JMP_FWD:
+            	fprintf(out, "while(*ptr) {\n");
+	   			break;
+	   		case OP_JMP_BCK:
+               fprintf(out, "}\n");
+               break;
+            case OP_END:
+            	exit=1;
+            	break;
+	   }
+	   if(exit) break;
+	}
+	fprintf(out, "return 0;\n}\n");
+	fclose(out);
+	return 0;
 }
 
 void rm_chars_from_str(char* str, char c) {
@@ -155,18 +201,57 @@ int run_from_file(char *filename) {
 	return run(str);
 }
 
+int compile_from_file(char *filename, char *outname) {
+	int c, size=100, i=0, *prog;
+	char *str;
+	FILE *file=fopen(filename, "r");
+	if(file==NULL) {
+		perror("fopen()");
+		return 1;
+	}
+	str=malloc(size);
+
+	while((c=fgetc(file))!=EOF) {
+		if(i==size) {
+			size=size+100;
+			str=realloc(str, size);
+		}
+		str[i++]=(char)c;
+	}
+	str[i]='\0';
+	fclose(file);
+	rm_chars_from_str(str, '\n');
+	if((prog=parse(str))==NULL) {
+		return 1;
+	}
+	i=b2c(prog, outname);
+	free(prog);
+	return i;
+}
+
 int main(int argc, char **argv) {
 	int status=0;
 	if(!argv[1]) {
 		fprintf(stderr, "ERROR: insufficient arguments provided!\n");
 		return 1;
 	}
-	if(!strcmp(argv[1], "-p")||!strcmp(argv[1], "--program")) {
+	if(!strcmp(argv[1], "-h")||!strcmp(argv[1], "--help")) {
+		printf("\e[1mUSAGE:\e[0m %s [option]\n", argv[0]);
+		printf("\e[1mOPTIONS:\e[0m\n-p|--program '[brainfuck code]' - run brainfuck code directly.\n-c|-C [in.b] [out.c] - compile brainfuck code into C code.\n-h|--help - print this help.\n");
+	} else if(!strcmp(argv[1], "-p")||!strcmp(argv[1], "--program")) {
 		if(!argv[2]) {
 			fprintf(stderr, "ERROR: '%s' option passed but no program provided!\n", argv[1]);
 			status=1;
+		} else {
+			status=run(argv[2]);
 		}
-		status=run(argv[2]);
+	} else if(!strcasecmp(argv[1], "-c")) {
+		if(!argv[2]||!argv[3]) {
+			fprintf(stderr, "ERROR: '%s' option passed but no program provided!\n", argv[1]);
+			status=1;
+		} else {
+			status=compile_from_file(argv[2], argv[3]);
+		}
 	} else {
 		status=run_from_file(argv[1]);
 	}

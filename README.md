@@ -18,7 +18,7 @@ make
 ```
 
 ## TODO
-- [ ] integrate **`b2c`**
+- [x] integrate **`b2c`**
 
 
 # b2c
