@@ -1,4 +1,5 @@
 # brainf
+[![Build](https://github.com/Itai-Nelken/brainf/actions/workflows/build.yml/badge.svg)](https://github.com/Itai-Nelken/brainf/actions/workflows/build.yml)<br>
 A [brainfuck](https://esolangs.org/wiki/Brainfuck) interpreter written in C.
 
 **NOTE:** included in this repo is also a C++ implementation of a stack, but it isn't used anywhere in `brainf`.
@@ -21,9 +22,6 @@ make
 In the `build` folder run `sudo make install`
 ### Uninstalling
 In the build folder run `sudo make uninstall`
-
-## TODO
-- [x] integrate **`b2c`**
 
 # brainfuck tutorial
 - https://gist.github.com/roachhd/dce54bec8ba55fb17d3a
