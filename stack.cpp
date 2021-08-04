@@ -8,12 +8,12 @@ class stack {
 	int sp, max_size;
 public:
 	stack(size_t size) {
-		this->data=(char *)malloc(size*sizeof(char));
+		this->data=new char[size];
 		this->max_size=size;
 		this->sp=0;
 	}
 	~stack() {
-		free(data);
+		delete[] data;
 	}
 	
 	bool isFull() {
@@ -29,10 +29,8 @@ public:
     	    cout << "Stack is full.\n";
     	    return false;
     	} else {
-    	    if(sp!=0) {
-    	    	sp++;
-    	    }
     	    data[sp]=a;
+    	    sp++;
     	    return true;
     	}
 	}
@@ -45,7 +43,7 @@ public:
 			cout << "Stack is empty.\n";
 			return false;
 		}
-		return data[sp];
+		return data[sp-1];
 	}
 	void dump() {
 		for(int i=0; i<strlen(data); i++) {
