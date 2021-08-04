@@ -36,4 +36,4 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: brainf-x64-DEBUG_${{ env.DATE }}
-        path: build/brainf-DEBUG_${{ env.DATE }}.zip
+        path: brainf-DEBUG_${{ env.DATE }}.zip
