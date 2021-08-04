@@ -5,12 +5,9 @@
 
 stack *stack_init(size_t size) {
 	stack *s=malloc(sizeof(stack));
-	s->data=malloc(size*sizeof(int));
+	s->data=calloc(size*sizeof(int *), sizeof(int));
 	s->sp=0;
 	s->max_size=size;
-	for(int i=0; i<s->max_size; i++) {
-		s->data[i]=0;
-	}
 	return s;
 }
 

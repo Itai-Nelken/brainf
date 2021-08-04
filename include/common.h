@@ -1,6 +1,8 @@
 #pragma once
 
+#ifndef STACK_SIZE
 #define STACK_SIZE 100
+#endif
 
 enum {
 	OP_INC_P,
@@ -24,8 +26,3 @@ typedef struct mem_s {
 	char *data;
 	int ptr;
 } mem;
-
-typedef struct op_s {
-	int op;
-} op;
-
