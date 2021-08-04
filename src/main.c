@@ -236,7 +236,8 @@ int main(int argc, char **argv) {
 		return 1;
 	}
 	if(!strcmp(argv[1], "-h")||!strcmp(argv[1], "--help")) {
-		printf("\e[1mUSAGE:\e[0m %s [option]\n", argv[0]);
+		printf("\e[1mbrainf\e[0m version %s\n", VER);
+		printf("\e[1mUSAGE:\e[0m\n%s [option]\n", argv[0]);
 		printf("\e[1mOPTIONS:\e[0m\n-p|--program '[brainfuck code]' - run brainfuck code directly.\n-c|-C [in.b] [out.c] - compile brainfuck code into C code.\n-h|--help - print this help.\n");
 	} else if(!strcmp(argv[1], "-p")||!strcmp(argv[1], "--program")) {
 		if(!argv[2]) {
