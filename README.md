@@ -1,6 +1,8 @@
 # brainf
 A [brainfuck](https://esolangs.org/wiki/Brainfuck) interpreter written in C.
 
+**NOTE:** included in this repo is also a C++ implementation of a stack, but it isn't used anywhere in `brainf`.
+
 ## features
 - Understands both strings of instructions and single ones, no need for a separator!
 - Can read instructions from a file.
