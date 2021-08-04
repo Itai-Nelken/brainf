@@ -184,7 +184,7 @@ int run_from_file(char *filename) {
 	char *str;
 	FILE *file=fopen(filename, "r");
 	if(file==NULL) {
-		perror("fopen()");
+		fprintf(stderr, "fopen(): failed to open file \"%s\": %s!\n", filename, strerror(errno));
 		return 1;
 	}
 	str=malloc(size);
@@ -206,7 +206,7 @@ int compile_from_file(char *filename, char *outname) {
 	char *str;
 	FILE *file=fopen(filename, "r");
 	if(file==NULL) {
-		perror("fopen()");
+		fprintf(stderr, "fopen(): failed to open file \"%s\": %s!\n", filename, strerror(errno));
 		return 1;
 	}
 	str=malloc(size);
