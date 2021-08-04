@@ -10,4 +10,5 @@ add_library(stack STATIC
 )
 
 add_executable(brainf src/main.c)
+add_executable(b2c b2c.c)
 target_link_libraries(brainf stack)
