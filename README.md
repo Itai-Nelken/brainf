@@ -16,16 +16,13 @@ cd build
 cmake ..
 make
 ```
+### Installing
+In the `build` folder run `sudo make install`
+### Uninstalling
+In the build folder run `sudo make uninstall`
 
 ## TODO
 - [x] integrate **`b2c`**
-
-
-# b2c
-Brainfuck to C compiler
-# Compiling
-same as **`brainf`**<br>
-**running:** `./b2c <in.b> <out.c>`
 
 # brainfuck tutorial
 - https://gist.github.com/roachhd/dce54bec8ba55fb17d3a
