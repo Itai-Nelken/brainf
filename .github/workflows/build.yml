@@ -25,4 +25,16 @@ jobs:
     - name: Test
       working-directory: ${{github.workspace}}/build
       run: ctest -C ${{env.BUILD_TYPE}}
-      
+
+    - name: get-date
+      run: echo "DATE=$(date +"%F")" >> $GITHUB_ENV
+
+    - name: prepare-upload
+      run: |
+        zip brainf-DEBUG_${{ env.DATE }}.zip brainf ../hello.b
+
+    - name: upload
+        uses: actions/upload-artifact@v2
+        with:
+          name: brainf-x64-DEBUG_${{ env.DATE }}
+          path: build/brainf-DEBUG_${{ env.DATE }}
