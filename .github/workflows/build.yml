@@ -33,7 +33,7 @@ jobs:
       run: zip brainf-DEBUG_${{ env.DATE }}.zip brainf ../hello.b
 
     - name: upload
-        uses: actions/upload-artifact@v2
-        with:
-          name: brainf-x64-DEBUG_${{ env.DATE }}
-          path: build/brainf-DEBUG_${{ env.DATE }}
+      uses: actions/upload-artifact@v2
+      with:
+        name: brainf-x64-DEBUG_${{ env.DATE }}
+        path: build/brainf-DEBUG_${{ env.DATE }}
