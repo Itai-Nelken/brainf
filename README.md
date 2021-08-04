@@ -24,7 +24,7 @@ make
 # b2c
 Brainfuck to C compiler
 # Compiling
-same as **`brainf`**
+same as **`brainf`**<br>
 **running:** `./b2c <in.b> <out.c>`
 
 # brainfuck tutorial
