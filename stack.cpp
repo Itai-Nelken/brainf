@@ -1,11 +1,18 @@
 #include <iostream>
-#include <cstring>
 
 using namespace std;
 
 class stack {
 	char *data;
 	int sp, max_size;
+
+	uint strlen(char *str) {
+		uint size=0;
+		for(int i=0; str[i]!='\0'; ++i) {
+			++size;
+		}
+		return size;
+	}
 public:
 	stack(size_t size) {
 		this->data=new char[size];
