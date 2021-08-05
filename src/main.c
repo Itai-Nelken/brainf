@@ -51,6 +51,7 @@ int *parse(char *str) {
 				prog[pc]=OP_JMP_BCK;
 				break;
 			default:
+				pc--;
 				//fprintf(stderr, "ERROR: invalid instruction \"%c\" (character %d)!\n", str[pc], pc+1);
 				//return NULL;
 				break;
