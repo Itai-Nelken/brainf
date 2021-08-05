@@ -10,7 +10,7 @@ A [brainfuck](https://esolangs.org/wiki/Brainfuck) interpreter written in C.
 - can compile brainfuck code into C code
 
 ## Installation
-If you are using Debian and derivatives, you can download Debian packages for amd64 and arm64 in the [latest release](https://github.com/Itai-Nelken/brainf/releases/latest).
+If you are using Debian and derivatives, you can download Debian packages for amd64 and arm64 in the [latest release](https://github.com/Itai-Nelken/brainf/releases/latest).<br>
 Otherwise [compile manually](#Compiiling).
 
 ## Compiling
