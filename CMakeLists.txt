@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.16)
-project(brainf VERSION 0.9 LANGUAGES C)
+project(brainf VERSION 1.0 LANGUAGES C)
 enable_testing()
 
 add_definitions(-Wall)
