@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <errno.h>
+#include <getopt.h>
 #include "common.h"
 #include "stack.h"
 
@@ -231,30 +232,34 @@ int compile_from_file(char *filename, char *outname) {
 }
 
 int main(int argc, char **argv) {
-	int status=0;
 	if(!argv[1]) {
 		fprintf(stderr, "ERROR: insufficient arguments provided!\n");
 		return 1;
 	}
-	if(!strcmp(argv[1], "-h")||!strcmp(argv[1], "--help")) {
-		printf("\e[1mbrainf\e[0m version %s\n", VER);
-		printf("\e[1mUSAGE:\e[0m\n%s [option]\n", argv[0]);
-		printf("\e[1mOPTIONS:\e[0m\n-p|--program '[brainfuck code]' - run brainfuck code directly.\n-c|-C [in.b] [out.c] - compile brainfuck code into C code. if no name for output file is provided, 'brainf.b.c' will be used.\n-h|--help - print this help.\n");
-	} else if(!strcasecmp(argv[1], "-p")||!strcmp(argv[1], "--program")) {
-		if(!argv[2]) {
-			fprintf(stderr, "ERROR: '%s' option passed but no program provided!\n", argv[1]);
-			status=1;
-		} else {
-			status=run(argv[2]);
-		}
-	} else if(!strcasecmp(argv[1], "-c")) {
-		if(!argv[2]) {
-			fprintf(stderr, "ERROR: '%s' option passed but no program provided!\n", argv[1]);
-			status=1;
-		} else if(!argv[3]) {
-			status=compile_from_file(argv[2], "brainf.b.c");
-		} else {
-			status=compile_from_file(argv[2], argv[3]);
+	
+	int status=0, opt;
+	struct option long_options[] = {
+		{"compile", required_argument, NULL, 'c'},
+		{"program", required_argument, NULL, 'p'},
+		{"help", no_argument, NULL, 'h'}
+	};
+
+	opt=getopt_long(argc, argv, "c:p:h", long_options, NULL);
+	if(opt!=-1) {
+		switch(opt) {
+			case 'h':
+				printf("\e[1mbrainf\e[0m version %s\n", VER);
+				printf("\e[1mUSAGE:\e[0m\n%s [option]\n", argv[0]);
+				printf("\e[1mOPTIONS:\e[0m\n-p|--program '[brainfuck code]' - run brainfuck code directly.\n-c|-C [in.b] [out.c] - compile brainfuck code into C code. if no name for output file is provided, 'brainf.out.c' will be used.\n-h|--help - print this help.\n");
+				break;
+			case 'p':
+				status=run(optarg);
+				break;
+			case 'c':
+				status=compile_from_file(optarg, "brainf.out.c");
+				break;
+			default:
+				break;
 		}
 	} else {
 		status=run_from_file(argv[1]);

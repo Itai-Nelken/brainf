@@ -23,3 +23,4 @@
 
 ### 05/08/2021
 - Comments now work properly.
+- Use `getopt_long` instead of an `if/else if/else` ladder with `strcmp` for argument parsing.
