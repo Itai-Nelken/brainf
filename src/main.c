@@ -233,7 +233,7 @@ int compile_from_file(char *filename, char *outname) {
 
 int main(int argc, char **argv) {
 	if(!argv[1]) {
-		fprintf(stderr, "ERROR: insufficient arguments provided!\n");
+		fprintf(stderr, "ERROR: insufficient arguments provided!\nUse \"--help\" argument for help.\n");
 		return 1;
 	}
 	
@@ -241,7 +241,8 @@ int main(int argc, char **argv) {
 	struct option long_options[] = {
 		{"compile", required_argument, NULL, 'c'},
 		{"program", required_argument, NULL, 'p'},
-		{"help", no_argument, NULL, 'h'}
+		{"help", no_argument, NULL, 'h'},
+		{0, 0, NULL, 0}
 	};
 
 	opt=getopt_long(argc, argv, "c:p:h", long_options, NULL);
@@ -250,7 +251,7 @@ int main(int argc, char **argv) {
 			case 'h':
 				printf("\e[1mbrainf\e[0m version %s\n", VER);
 				printf("\e[1mUSAGE:\e[0m\n%s [option]\n", argv[0]);
-				printf("\e[1mOPTIONS:\e[0m\n-p|--program '[brainfuck code]' - run brainfuck code directly.\n-c|-C [in.b] [out.c] - compile brainfuck code into C code. if no name for output file is provided, 'brainf.out.c' will be used.\n-h|--help - print this help.\n");
+				printf("\e[1mOPTIONS:\e[0m\n-p|--program '[brainfuck code]' - run brainfuck code directly.\n-c|--compile [in.b] - compile brainfuck code into C code. the output file will be called 'brainf.out.c'.\n-h|--help - print this help.\n");
 				break;
 			case 'p':
 				status=run(optarg);
