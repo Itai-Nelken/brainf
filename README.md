@@ -9,6 +9,10 @@ A [brainfuck](https://esolangs.org/wiki/Brainfuck) interpreter written in C.
 - Can read instructions from a file.
 - can compile brainfuck code into C code
 
+## Installation
+If you are using Debian and derivatives, you can download Debian packages for amd64 and arm64 in the [latest release](https://github.com/Itai-Nelken/brainf/releases/latest).
+Otherwise [compile manually](#Compiiling).
+
 ## Compiling
 ```
 git clone https://github.com/Itai-Nelken/brainf.git
@@ -18,9 +22,10 @@ cd build
 cmake ..
 make
 ```
-### Installing
+#### Installing
 In the `build` folder run `sudo make install`
-### Uninstalling
+
+#### Uninstalling
 In the build folder run `sudo make uninstall`
 
 # brainfuck tutorial
