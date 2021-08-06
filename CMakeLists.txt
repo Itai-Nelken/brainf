@@ -30,7 +30,7 @@ endif()
 
 add_test(print_H brainf -p ">+++++++++[<++++++++>-]<.")
 set_tests_properties(print_H PROPERTIES PASS_REGULAR_EXPRESSION "H")
-add_test(hello brainf ../hello.b)
+add_test(hello brainf ../examples/hello.b)
 set_tests_properties(hello PROPERTIES PASS_REGULAR_EXPRESSION "Hello, world!")
 
 set(ARCH ${CMAKE_HOST_SYSTEM_PROCESSOR})

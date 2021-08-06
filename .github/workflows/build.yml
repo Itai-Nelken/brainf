@@ -30,7 +30,7 @@ jobs:
       run: echo "DATE=$(date +"%F")" >> $GITHUB_ENV
 
     - name: prepare-upload
-      run: zip brainf-DEBUG_${{ env.DATE }}.zip build/brainf hello.b
+      run: zip brainf-DEBUG_${{ env.DATE }}.zip build/brainf examples/hello.b examples/cat.b
 
     - name: upload
       uses: actions/upload-artifact@v2
