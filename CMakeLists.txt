@@ -9,10 +9,15 @@ add_library(stack STATIC
 			src/stack.c
 			include/stack.h
 )
+add_library(run STATIC
+			src/run.c
+			include/run.h
+)
 
 add_compile_definitions(VER="${CMAKE_PROJECT_VERSION}")
 add_executable(brainf src/main.c)
-target_link_libraries(brainf stack)
+target_link_libraries(brainf stack run)
+target_link_libraries(run stack)
 
 install(TARGETS brainf
 	DESTINATION /usr/local/bin

@@ -1,5 +1,9 @@
 #pragma once
 
+#ifndef MEM_SIZE
+#define MEM_SIZE 30000
+#endif
+
 #ifndef STACK_SIZE
 #define STACK_SIZE 100
 #endif
