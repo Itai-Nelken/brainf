@@ -30,6 +30,7 @@ int main(int argc, char **argv) {
 				break;
 			case 'v':
 				printf("\e[1mbrainf\e[0m version %s built on %s.\n", VER, __TIMESTAMP__);
+				printf("memory size: %d, stack size: %d\n", MEM_SIZE, STACK_SIZE);
 				break;
 			case 'p':
 				status=run(optarg);

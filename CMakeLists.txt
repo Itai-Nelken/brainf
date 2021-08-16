@@ -2,6 +2,16 @@ cmake_minimum_required(VERSION 3.16)
 project(brainf VERSION 1.0 LANGUAGES C)
 enable_testing()
 
+option(STACK_SIZE "size of the stack, default is 100." 100)
+option(MEM_SIZE "Size of the \"memory\", default is 30000" 30000)
+
+if(STACK_SIZE)
+	add_compile_definitions(STACK_SIZE=${STACK_SIZE})
+endif()
+if(MEM_SIZE)
+	add_compile_definitions(MEM_SIZE=${MEM_SIZE})
+endif()
+
 add_definitions(-Wall)
 include_directories(brainf PRIVATE "include/")
 
