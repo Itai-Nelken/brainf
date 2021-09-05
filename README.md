@@ -30,3 +30,7 @@ In the build folder run `sudo make uninstall`
 
 # brainfuck tutorial
 - https://gist.github.com/roachhd/dce54bec8ba55fb17d3a
+
+### TODO
+- [ ] dynamic memory size.
+- [ ] dynamic stack size.
