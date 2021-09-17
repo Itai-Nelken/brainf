@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.16)
-project(brainf VERSION 1.0 LANGUAGES C)
+project(brainf VERSION 1.1 LANGUAGES C)
 enable_testing()
 
 option(STACK_SIZE "size of the stack, default is 100." 100)
