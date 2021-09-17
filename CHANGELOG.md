@@ -24,3 +24,26 @@
 ### 05/08/2021
 - Comments now work properly.
 - Use `getopt_long` instead of an `if/else if/else` ladder with `strcmp` for argument parsing.
+- Released version 1.0!
+- Improved Documentation
+
+### 06/08/2021
+- Make `struct option long_options[]` global (for no reason other than it makes the code look nicer...).
+- Add `--version|-v` command line option.
+- Create `examples` folder, move `hello.b` to it, and create `examples/cat.b`.
+
+### 07/08/2021
+- Move all run* functions to `src/run.c`.
+
+### 16/08/2021
+- Add ability to change memory and stack size during configuration with `cmake`.
+- Make version flag print memory and stack sizes.
+
+### 05/09/2021
+- Add `TODO` to readme.
+
+### 18/09/2021
+- use `argc<2` instead of `!argv[1]` to check if there are no command line arguments.
+- [not related] improve C++ implementation of a stack.
+- Update this changelog.
+- Release version 1.1!
