@@ -1,5 +1,6 @@
 # brainf
-[![Build](https://github.com/Itai-Nelken/brainf/actions/workflows/build.yml/badge.svg)](https://github.com/Itai-Nelken/brainf/actions/workflows/build.yml)<br>
+[![Build](https://github.com/Itai-Nelken/brainf/actions/workflows/build.yml/badge.svg)](https://github.com/Itai-Nelken/brainf/actions/workflows/build.yml)
+[![Release](https://img.shields.io/github/v/release/Itai-Nelken/brainf?include_prereleases)](https://github.com/Itai-Nelken/brainf/releases/latest)<br>
 A [brainfuck](https://esolangs.org/wiki/Brainfuck) interpreter written in C.
 
 **NOTE:** included in this repo is also a C++ implementation of a stack, but it isn't used anywhere in `brainf`.
