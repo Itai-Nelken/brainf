@@ -1,17 +1,15 @@
 #include <iostream>
 
-using namespace std;
-
 class stack {
 	char *data;
 	int sp, max_size;
 
-	uint strlen(char *str) {
-		uint size=0;
-		for(int i=0; str[i]!='\0'; ++i) {
-			++size;
+	uint stringlen(const char *s) {
+		uint length=0;
+		while(*s++) {
+			length++;
 		}
-		return size;
+		return length;
 	}
 public:
 	stack(size_t size) {
@@ -24,16 +22,18 @@ public:
 	}
 	
 	bool isFull() {
-		if(sp==max_size) return true;
-		else return false;
+		//if(sp==max_size) return true;
+		//else return false;
+		return sp==max_size ? true : false;
 	}
 	bool isEmpty() {
-		if(sp<0) return true;
-		else return false;
+		//if(sp<0) return true;
+		//else return false;
+		return sp<0 ? true : false;
 	}
 	bool push(char a) {
     	if(isFull()) {
-    	    cout << "Stack is full.\n";
+    	    std::cerr << "Stack is full.\n";
     	    return false;
     	} else {
     	    data[sp]=a;
@@ -42,19 +42,23 @@ public:
     	}
 	}
 	char pop() {
+		if(isEmpty()) {
+			std::cerr << "Stack is empty.\n";
+			return false;
+		}
 		sp--;
 		return data[sp+1];
 	}
 	char peek() {
 		if(isEmpty()) {
-			cout << "Stack is empty.\n";
+			std::cerr << "Stack is empty.\n";
 			return false;
 		}
 		return data[sp-1];
 	}
 	void dump() {
-		for(int i=0; i<strlen(data); i++) {
-			cout << "[" << i << "] " << data[i] << endl;
+		for(int i=0; i<stringlen(data); i++) {
+			std::cout << "[" << i << "] " << data[i] << std::endl;
 		}
 	}
 };
@@ -63,7 +67,7 @@ int main(void) {
 	stack s(10);
 	s.push('a');
 	s.push('b');
-	cout << s.peek() << endl;
+	std::cout << s.peek() << std::endl;
 	s.dump();
 	return 0;
 }
