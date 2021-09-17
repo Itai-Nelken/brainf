@@ -15,7 +15,7 @@ struct option long_options[] = {
 };
 
 int main(int argc, char **argv) {
-	if(!argv[1]) {
+	if(argc<2) {
 		fprintf(stderr, "ERROR: insufficient arguments provided!\nUse \"--help\" argument for help.\n");
 		return 1;
 	}
