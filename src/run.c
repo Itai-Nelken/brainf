@@ -195,7 +195,9 @@ int run_from_file(char *filename) {
 	}
 	str[i]='\0';
 	fclose(file);
-	return run(str);
+	int ret = run(str);
+	free(str);
+	return ret;
 }
 
 int compile_from_file(char *filename, char *outname) {
@@ -223,5 +225,6 @@ int compile_from_file(char *filename, char *outname) {
 	}
 	i=b2c(prog, outname);
 	free(prog);
+	free(str);
 	return i;
 }
