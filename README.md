@@ -1,3 +1,5 @@
+# NOTE: this project is superseded by [Brainf2](https://github.com/Itai-Nelken/Brainf2) and so isn't maintained anymore.
+
 # brainf
 [![Build](https://github.com/Itai-Nelken/brainf/actions/workflows/build.yml/badge.svg)](https://github.com/Itai-Nelken/brainf/actions/workflows/build.yml)
 [![Release](https://img.shields.io/github/v/release/Itai-Nelken/brainf?include_prereleases)](https://github.com/Itai-Nelken/brainf/releases/latest)<br>
